@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Root — Get to the Root of Every Debate</title>
+<meta name="description" content="Root helps you understand why people agree or disagree. Drill into the reasoning, debate in breakout rooms, and find common ground.">
+<meta property="og:title" content="Root — Get to the Root of Every Debate">
+<meta property="og:description" content="Understand why people agree or disagree. Explore the reasoning behind every opinion.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tryroot.app">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Root — Get to the Root of Every Debate">
+<meta name="twitter:description" content="Understand why people agree or disagree. Explore the reasoning behind every opinion.">
+<meta name="theme-color" content="#0A0A0C">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    background: #0A0A0C;
+    color: #F0F0F2;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+    text-align: center;
+  }
+
+  .container {
+    max-width: 480px;
+    width: 100%;
+  }
+
+  .logo {
+    margin-bottom: 32px;
+    display: inline-block;
+  }
+
+  .logo-text {
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
+  .logo-r { color: #F59E0B; }
+  .logo-rest { color: #F0F0F2; }
+
+  .tagline {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }
+
+  .description {
+    font-size: 16px;
+    color: #8A8A96;
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
+
+  .features {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 40px;
+    text-align: left;
+  }
+
+  .feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    background: #141418;
+    border-radius: 12px;
+    border: 1px solid #2A2A32;
+  }
+
+  .feature-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(245, 158, 11, 0.1);
+    border-radius: 8px;
+  }
+
+  .feature-text {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .feature-title {
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  .feature-desc {
+    color: #8A8A96;
+  }
+
+  .store-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+
+  .store-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    transition: transform 0.15s, opacity 0.15s;
+  }
+
+  .store-btn:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+  }
+
+  .store-btn-ios {
+    background: #F0F0F2;
+    color: #0A0A0C;
+  }
+
+  .store-btn-android {
+    background: #141418;
+    color: #F0F0F2;
+    border: 1px solid #2A2A32;
+  }
+
+  .store-icon {
+    font-size: 20px;
+  }
+
+  .coming-soon {
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    border-radius: 20px;
+    color: #F59E0B;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 32px;
+  }
+
+  .footer {
+    margin-top: 48px;
+    color: #55555F;
+    font-size: 12px;
+  }
+
+  .footer a {
+    color: #8A8A96;
+    text-decoration: none;
+  }
+
+  .footer a:hover {
+    color: #F59E0B;
+  }
+
+  /* Deep link redirect notice */
+  .redirect-notice {
+    display: none;
+    background: #141418;
+    border: 1px solid #F59E0B;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 32px;
+  }
+
+  .redirect-notice.visible {
+    display: block;
+  }
+
+  .redirect-notice p {
+    font-size: 14px;
+    color: #8A8A96;
+    margin-top: 8px;
+  }
+
+  .redirect-notice strong {
+    color: #F0F0F2;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Logo -->
+  <div class="logo">
+    <div class="logo-text">
+      <span class="logo-r">R</span><span class="logo-rest">oot</span>
+    </div>
+  </div>
+
+  <!-- Redirect notice for deep links -->
+  <div class="redirect-notice" id="redirect-notice">
+    <strong>Opening in Root...</strong>
+    <p>If the app doesn't open, download it below to view this content.</p>
+  </div>
+
+  <div class="tagline">Get to the root of every debate</div>
+  
+  <p class="description">
+    Root helps you understand why people agree or disagree on the topics that matter. 
+    Explore the reasoning, dig into the layers, and have real conversations 
+    with people who see things differently.
+  </p>
+
+  <div class="features">
+    <div class="feature">
+      <div class="feature-icon">🗳️</div>
+      <div class="feature-text">
+        <div class="feature-title">Agree or Disagree</div>
+        <div class="feature-desc">Share your stance on weekly questions across politics, science, culture, and more.</div>
+      </div>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🌱</div>
+      <div class="feature-text">
+        <div class="feature-title">Explore the Roots</div>
+        <div class="feature-desc">Drill into 5 layers of reasoning — from broad opinions down to source-backed facts.</div>
+      </div>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">💬</div>
+      <div class="feature-text">
+        <div class="feature-title">Breakout Rooms</div>
+        <div class="feature-desc">Join conversations with an AI moderator that keeps things productive and on track.</div>
+      </div>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">📊</div>
+      <div class="feature-text">
+        <div class="feature-title">Real Consensus</div>
+        <div class="feature-desc">See where people actually stand — not algorithms, not echo chambers, just real perspectives.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="coming-soon">Coming Soon to iOS & Android</div>
+
+  <!-- Store buttons - uncomment when live -->
+  <!--
+  <div class="store-buttons">
+    <a href="#" class="store-btn store-btn-ios">
+      <span class="store-icon">🍎</span>
+      App Store
+    </a>
+    <a href="#" class="store-btn store-btn-android">
+      <span class="store-icon">▶️</span>
+      Google Play
+    </a>
+  </div>
+  -->
+
+  <div class="footer">
+    <p>&copy; 2026 Root. All rights reserved.</p>
+  </div>
+</div>
+
+<script>
+  // Handle deep link redirects
+  // If someone arrives at a path like /q/abc123, they don't have the app
+  // Show a notice and the download options
+  const path = window.location.pathname;
+  if (path && path !== '/' && path !== '/index.html') {
+    document.getElementById('redirect-notice').classList.add('visible');
+  }
+</script>
+
+</body>
+</html>
