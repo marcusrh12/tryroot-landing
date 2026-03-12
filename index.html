@@ -365,8 +365,8 @@
   // Email signup handling
   // Uses Google Forms as a free backend to collect emails
   // Replace GOOGLE_FORM_ID and ENTRY_ID with your actual Google Form values
-  const GOOGLE_FORM_URL = 'REPLACE_WITH_YOUR_GOOGLE_FORM_URL';
-  const GOOGLE_FORM_ENTRY = 'REPLACE_WITH_YOUR_ENTRY_ID';
+  const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeIU8fIkCQKJfLVo8x9GmPRQdQRoF7D-j3HpbpEOA6teXdwUA/formResponse';
+  const GOOGLE_FORM_ENTRY = 'entry.2009917710';
 
   async function handleSignup() {
     const email = document.getElementById('signup-email').value.trim();
@@ -382,7 +382,7 @@
 
     try {
       // Submit to Google Forms (no-cors mode, fire and forget)
-      if (GOOGLE_FORM_URL !== 'REPLACE_WITH_YOUR_GOOGLE_FORM_URL') {
+      if (GOOGLE_FORM_URL !== 'https://docs.google.com/forms/d/e/1FAIpQLSeIU8fIkCQKJfLVo8x9GmPRQdQRoF7D-j3HpbpEOA6teXdwUA/formResponse') {
         const formData = new FormData();
         formData.append(GOOGLE_FORM_ENTRY, email);
         fetch(GOOGLE_FORM_URL, { method: 'POST', mode: 'no-cors', body: formData });
