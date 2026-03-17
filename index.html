@@ -247,6 +247,100 @@
     color: #F59E0B;
   }
 
+  /* Screenshot carousel */
+  .screenshots-section {
+    margin-bottom: 40px;
+    overflow: hidden;
+  }
+
+  .screenshots-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .screenshots-wrapper {
+    position: relative;
+  }
+
+  .screenshots-carousel {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 4px 0 16px 0;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+  }
+
+  .screenshots-carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .screenshot-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-60%);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(20, 20, 24, 0.9);
+    border: 1px solid #2A2A32;
+    color: #F59E0B;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: background 0.2s, transform 0.2s;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .screenshot-arrow:hover {
+    background: rgba(245, 158, 11, 0.15);
+    transform: translateY(-60%) scale(1.1);
+  }
+
+  .screenshot-arrow-left {
+    left: -4px;
+  }
+
+  .screenshot-arrow-right {
+    right: -4px;
+  }
+
+  .screenshot-item {
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    width: 200px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #2A2A32;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s;
+  }
+
+  .screenshot-item:hover {
+    transform: scale(1.02);
+  }
+
+  .screenshot-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .screenshot-label {
+    padding: 10px 12px;
+    background: #141418;
+    font-size: 12px;
+    color: #8A8A96;
+    text-align: center;
+  }
+
   /* Deep link redirect notice */
   .redirect-notice {
     display: none;
@@ -326,6 +420,41 @@
     </div>
   </div>
 
+  <!-- Screenshots carousel -->
+  <div class="screenshots-section">
+    <div class="screenshots-title">See Root in action</div>
+    <div class="screenshots-wrapper">
+      <button class="screenshot-arrow screenshot-arrow-left" onclick="scrollCarousel(-1)" aria-label="Scroll left">&#8249;</button>
+      <button class="screenshot-arrow screenshot-arrow-right" onclick="scrollCarousel(1)" aria-label="Scroll right">&#8250;</button>
+      <div class="screenshots-carousel" id="screenshots-carousel">
+      <div class="screenshot-item">
+        <img src="screenshot1.png" alt="Weekly Questions" loading="lazy">
+        <div class="screenshot-label">Weekly Questions</div>
+      </div>
+      <div class="screenshot-item">
+        <img src="screenshot2.png" alt="Question Card with Reasons" loading="lazy">
+        <div class="screenshot-label">Explore Reasons</div>
+      </div>
+      <div class="screenshot-item">
+        <img src="screenshot3.png" alt="Explore by Topic" loading="lazy">
+        <div class="screenshot-label">Browse Topics</div>
+      </div>
+      <div class="screenshot-item">
+        <img src="screenshot4.png" alt="Drill Down to Sources" loading="lazy">
+        <div class="screenshot-label">Source-Backed Facts</div>
+      </div>
+      <div class="screenshot-item">
+        <img src="screenshot5.png" alt="Breakout Room Discussion" loading="lazy">
+        <div class="screenshot-label">AI-Moderated Discussions</div>
+      </div>
+      <div class="screenshot-item">
+        <img src="screenshot6.png" alt="Profile and Stats" loading="lazy">
+        <div class="screenshot-label">Track Your Activity</div>
+      </div>
+    </div>
+    </div>
+  </div>
+
   <div class="signup-section">
     <div class="signup-title">Get notified when Root launches</div>
     <div class="signup-form" id="signup-form">
@@ -360,6 +489,13 @@
   const path = window.location.pathname;
   if (path && path !== '/' && path !== '/index.html') {
     document.getElementById('redirect-notice').classList.add('visible');
+  }
+
+  // Screenshot carousel scroll
+  function scrollCarousel(direction) {
+    const carousel = document.getElementById('screenshots-carousel');
+    const scrollAmount = 216; // card width (200) + gap (16)
+    carousel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
   }
 
   // Email signup handling
