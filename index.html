@@ -341,6 +341,97 @@
     text-align: center;
   }
 
+  /* Lightbox overlay */
+  .lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.92);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .lightbox.visible {
+    display: flex;
+  }
+
+  .lightbox img {
+    max-height: 90vh;
+    max-width: 90vw;
+    border-radius: 16px;
+    box-shadow: 0 8px 48px rgba(0, 0, 0, 0.6);
+    object-fit: contain;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(20, 20, 24, 0.8);
+    border: 1px solid #2A2A32;
+    color: #F0F0F2;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+
+  .lightbox-close:hover {
+    background: rgba(245, 158, 11, 0.2);
+  }
+
+  .lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(20, 20, 24, 0.8);
+    border: 1px solid #2A2A32;
+    color: #F59E0B;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+
+  .lightbox-nav:hover {
+    background: rgba(245, 158, 11, 0.15);
+  }
+
+  .lightbox-nav-left {
+    left: 16px;
+  }
+
+  .lightbox-nav-right {
+    right: 16px;
+  }
+
+  .lightbox-label {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #8A8A96;
+    font-size: 14px;
+    background: rgba(20, 20, 24, 0.8);
+    padding: 6px 16px;
+    border-radius: 20px;
+  }
+
   /* Deep link redirect notice */
   .redirect-notice {
     display: none;
@@ -427,32 +518,41 @@
       <button class="screenshot-arrow screenshot-arrow-left" onclick="scrollCarousel(-1)" aria-label="Scroll left">&#8249;</button>
       <button class="screenshot-arrow screenshot-arrow-right" onclick="scrollCarousel(1)" aria-label="Scroll right">&#8250;</button>
       <div class="screenshots-carousel" id="screenshots-carousel">
-      <div class="screenshot-item">
+      <div class="screenshot-item" onclick="openLightbox(0)" style="cursor:pointer;">
         <img src="screenshot1.png" alt="Weekly Questions" loading="lazy">
         <div class="screenshot-label">Weekly Questions</div>
       </div>
-      <div class="screenshot-item">
+      <div class="screenshot-item" onclick="openLightbox(1)" style="cursor:pointer;">
         <img src="screenshot2.png" alt="Question Card with Reasons" loading="lazy">
         <div class="screenshot-label">Explore Reasons</div>
       </div>
-      <div class="screenshot-item">
+      <div class="screenshot-item" onclick="openLightbox(2)" style="cursor:pointer;">
         <img src="screenshot3.png" alt="Explore by Topic" loading="lazy">
         <div class="screenshot-label">Browse Topics</div>
       </div>
-      <div class="screenshot-item">
+      <div class="screenshot-item" onclick="openLightbox(3)" style="cursor:pointer;">
         <img src="screenshot4.png" alt="Drill Down to Sources" loading="lazy">
         <div class="screenshot-label">Source-Backed Facts</div>
       </div>
-      <div class="screenshot-item">
+      <div class="screenshot-item" onclick="openLightbox(4)" style="cursor:pointer;">
         <img src="screenshot5.png" alt="Breakout Room Discussion" loading="lazy">
         <div class="screenshot-label">AI-Moderated Discussions</div>
       </div>
-      <div class="screenshot-item">
+      <div class="screenshot-item" onclick="openLightbox(5)" style="cursor:pointer;">
         <img src="screenshot6.png" alt="Profile and Stats" loading="lazy">
         <div class="screenshot-label">Track Your Activity</div>
       </div>
     </div>
     </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox(event)">&#10005;</button>
+    <button class="lightbox-nav lightbox-nav-left" onclick="navigateLightbox(event, -1)">&#8249;</button>
+    <button class="lightbox-nav lightbox-nav-right" onclick="navigateLightbox(event, 1)">&#8250;</button>
+    <img id="lightbox-img" src="" alt="">
+    <div class="lightbox-label" id="lightbox-label"></div>
   </div>
 
   <div class="signup-section">
@@ -497,6 +597,48 @@
     const scrollAmount = 216; // card width (200) + gap (16)
     carousel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
   }
+
+  // Lightbox
+  const screenshots = [
+    { src: 'screenshot1.png', label: 'Weekly Questions' },
+    { src: 'screenshot2.png', label: 'Explore Reasons' },
+    { src: 'screenshot3.png', label: 'Browse Topics' },
+    { src: 'screenshot4.png', label: 'Source-Backed Facts' },
+    { src: 'screenshot5.png', label: 'AI-Moderated Discussions' },
+    { src: 'screenshot6.png', label: 'Track Your Activity' },
+  ];
+  let currentLightbox = 0;
+
+  function openLightbox(index) {
+    currentLightbox = index;
+    const lightbox = document.getElementById('lightbox');
+    document.getElementById('lightbox-img').src = screenshots[index].src;
+    document.getElementById('lightbox-label').textContent = screenshots[index].label;
+    lightbox.classList.add('visible');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox(event) {
+    if (event.target.classList.contains('lightbox-nav') || event.target.classList.contains('lightbox-nav-left') || event.target.classList.contains('lightbox-nav-right')) return;
+    document.getElementById('lightbox').classList.remove('visible');
+    document.body.style.overflow = '';
+  }
+
+  function navigateLightbox(event, direction) {
+    event.stopPropagation();
+    currentLightbox = (currentLightbox + direction + screenshots.length) % screenshots.length;
+    document.getElementById('lightbox-img').src = screenshots[currentLightbox].src;
+    document.getElementById('lightbox-label').textContent = screenshots[currentLightbox].label;
+  }
+
+  // Keyboard navigation for lightbox
+  document.addEventListener('keydown', function(e) {
+    const lightbox = document.getElementById('lightbox');
+    if (!lightbox.classList.contains('visible')) return;
+    if (e.key === 'Escape') { lightbox.classList.remove('visible'); document.body.style.overflow = ''; }
+    if (e.key === 'ArrowLeft') navigateLightbox(e, -1);
+    if (e.key === 'ArrowRight') navigateLightbox(e, 1);
+  });
 
   // Email signup handling
   const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeIU8fIkCQKJfLVo8x9GmPRQdQRoF7D-j3HpbpEOA6teXdwUA/formResponse';
