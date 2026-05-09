@@ -555,27 +555,15 @@
     <div class="lightbox-label" id="lightbox-label"></div>
   </div>
 
-  <div class="signup-section">
-    <div class="signup-title">Get notified when Root launches</div>
-    <div class="signup-form" id="signup-form">
-      <input type="email" class="signup-input" id="signup-email" placeholder="Enter your email" required>
-      <button class="signup-btn" id="signup-btn" onclick="handleSignup()">Notify Me</button>
-    </div>
-    <div class="signup-success" id="signup-success">You're on the list! We'll let you know when Root is ready.</div>
-    <div class="signup-count" id="signup-count"></div>
-  </div>
-
-  <!-- Store buttons - uncomment when live -->
-  <!--
   <div class="store-buttons">
-    <a href="#" class="store-btn store-btn-ios">
+    <a href="https://apps.apple.com/us/app/root-debate-discuss/id6761019717" class="store-btn store-btn-ios">
       <svg width="20" height="24" viewBox="0 0 814 1000" fill="#0A0A0C" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-57.8-155.5-127.4C46 790.8 0 663.3 0 541.8c0-207.4 135.4-317 269-317 70.1 0 128.4 46.4 172.5 46.4 42.4 0 109.2-49 191.4-49 30.8 0 108.2 2.6 168.6 71.9zm-174.6-209.5c31.4-37.9 54.3-90.9 54.3-143.9 0-7.1-.6-14.3-1.9-20.1-51.9 1.9-113.1 34.7-150.7 75.8-28.5 32.4-55.1 85.4-55.1 139.1 0 7.8 1.3 15.6 1.9 18.1 3.2.6 8.4 1.3 13.6 1.3 46.5 0 102.9-31.4 138-70.3z"/>
       </svg>
       App Store
     </a>
-    <a href="#" class="store-btn store-btn-android">
-      <svg width="20" height="24" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <a href="https://play.google.com/store/apps/details?id=com.tryroot.app" class="store-btn store-btn-android">
+      <svg width="20" height="20" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <defs>
           <linearGradient id="gp-grad-a" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stop-color="#00C6FF"/>
@@ -599,10 +587,12 @@
         <path d="M327.33 307.91l-75.33-75.33L29.01 455.66c8.22 8.7 21.8 9.78 37.1.96l261.22-148.71z" fill="url(#gp-grad-c)"/>
         <path d="M327.33 204.09L66.11 55.38C50.81 46.56 37.23 47.64 29.01 56.34l222.99 222.24z" fill="url(#gp-grad-d)"/>
       </svg>
-      Google Play
+      <span>
+        Google Play
+        <span style="display:block; font-size:11px; color:#8A8A96;">Coming Soon</span>
+      </span>
     </a>
   </div>
-  -->
 
   <div class="footer">
     <p>&copy; 2026 Root. All rights reserved.</p>
@@ -665,79 +655,6 @@
     if (e.key === 'ArrowRight') navigateLightbox(e, 1);
   });
 
-  // Email signup handling
-  const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeIU8fIkCQKJfLVo8x9GmPRQdQRoF7D-j3HpbpEOA6teXdwUA/formResponse';
-  const GOOGLE_FORM_ENTRY = 'entry.2009917710';
-
-  // Simple spam protection
-  let lastSubmitTime = 0;
-  const RATE_LIMIT_MS = 30000; // 30 seconds between submissions
-
-  async function handleSignup() {
-    const emailInput = document.getElementById('signup-email');
-    const email = emailInput.value.trim().toLowerCase();
-    const btn = document.getElementById('signup-btn');
-    
-    // Validate email format
-    if (!email || !email.includes('@') || !email.includes('.') || email.length < 5) {
-      emailInput.style.borderColor = '#EF4444';
-      return;
-    }
-
-    // Rate limiting — prevent rapid submissions
-    const now = Date.now();
-    if (now - lastSubmitTime < RATE_LIMIT_MS) {
-      document.getElementById('signup-form').style.display = 'none';
-      document.getElementById('signup-success').textContent = "You've already signed up! We'll notify you when Root launches.";
-      document.getElementById('signup-success').classList.add('visible');
-      return;
-    }
-
-    // Check for duplicate email (local check)
-    const signups = JSON.parse(localStorage.getItem('root_signups') || '[]');
-    if (signups.includes(email)) {
-      document.getElementById('signup-form').style.display = 'none';
-      document.getElementById('signup-success').textContent = "You're already on the list! We'll let you know when Root is ready.";
-      document.getElementById('signup-success').classList.add('visible');
-      return;
-    }
-
-    btn.disabled = true;
-    btn.textContent = '...';
-    lastSubmitTime = now;
-
-    try {
-      // Submit to Google Forms
-      const formData = new FormData();
-      formData.append(GOOGLE_FORM_ENTRY, email);
-      fetch(GOOGLE_FORM_URL, { method: 'POST', mode: 'no-cors', body: formData });
-
-      // Store locally to prevent duplicates
-      signups.push(email);
-      localStorage.setItem('root_signups', JSON.stringify(signups));
-
-      // Show success
-      document.getElementById('signup-form').style.display = 'none';
-      document.getElementById('signup-success').textContent = "You're on the list! We'll let you know when Root is ready.";
-      document.getElementById('signup-success').classList.add('visible');
-      
-    } catch (err) {
-      // Google Forms no-cors always appears to fail, but data still submits
-      document.getElementById('signup-form').style.display = 'none';
-      document.getElementById('signup-success').textContent = "You're on the list! We'll let you know when Root is ready.";
-      document.getElementById('signup-success').classList.add('visible');
-    }
-  }
-
-  // Allow Enter key to submit
-  document.getElementById('signup-email').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') handleSignup();
-  });
-
-  // Reset border color on focus
-  document.getElementById('signup-email').addEventListener('focus', function() {
-    this.style.borderColor = '#2A2A32';
-  });
 </script>
 
 </body>
