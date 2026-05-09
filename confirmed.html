@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Confirmed — Root</title>
+<meta name="description" content="Your email has been confirmed. Open Root to start exploring.">
+<meta name="theme-color" content="#0A0A0C">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0A0A0C;
+    color: #F0F0F2;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+    text-align: center;
+  }
+
+  .container {
+    max-width: 480px;
+    width: 100%;
+  }
+
+  .logo {
+    margin-bottom: 40px;
+    display: inline-block;
+  }
+
+  .logo-img {
+    height: 60px;
+    width: auto;
+  }
+
+  /* Animated checkmark */
+  .check-wrap {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 32px;
+    position: relative;
+  }
+
+  .check-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(245, 158, 11, 0.1);
+    border: 2px solid #F59E0B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    opacity: 0;
+  }
+
+  @keyframes popIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  .check-icon {
+    font-size: 36px;
+    animation: fadeIn 0.3s ease 0.3s forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+  .title {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+    animation: slideUp 0.4s ease 0.2s forwards;
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  .subtitle {
+    font-size: 16px;
+    color: #8A8A96;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    animation: slideUp 0.4s ease 0.35s forwards;
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  @keyframes slideUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Step cards */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 40px;
+    text-align: left;
+    animation: slideUp 0.4s ease 0.45s forwards;
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  .step {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    background: #141418;
+    border-radius: 12px;
+    border: 1px solid #2A2A32;
+  }
+
+  .step-number {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #F59E0B;
+    color: #0A0A0C;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .step-text {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .step-title {
+    font-weight: 600;
+    margin-bottom: 2px;
+    color: #F0F0F2;
+  }
+
+  .step-desc {
+    color: #8A8A96;
+  }
+
+  /* Open app button */
+  .open-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 16px 28px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    background: #F59E0B;
+    color: #0A0A0C;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.15s, opacity 0.15s;
+    margin-bottom: 16px;
+    animation: slideUp 0.4s ease 0.55s forwards;
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  .open-btn:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+  }
+
+  .not-you {
+    font-size: 13px;
+    color: #55555F;
+    animation: slideUp 0.4s ease 0.65s forwards;
+    opacity: 0;
+    transform: translateY(12px);
+    margin-bottom: 32px;
+  }
+
+  .not-you a {
+    color: #8A8A96;
+    text-decoration: none;
+  }
+
+  .not-you a:hover {
+    color: #F59E0B;
+  }
+
+  .footer {
+    color: #55555F;
+    font-size: 12px;
+    animation: slideUp 0.4s ease 0.7s forwards;
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  .footer a {
+    color: #8A8A96;
+    text-decoration: none;
+  }
+
+  .footer a:hover {
+    color: #F59E0B;
+  }
+
+  /* Error state */
+  .error-state {
+    display: none;
+  }
+
+  .error-state .check-circle {
+    border-color: #EF4444;
+    background: rgba(239, 68, 68, 0.1);
+  }
+
+  .error-state .step-number {
+    background: #EF4444;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="logo">
+    <img src="root-logo.png" alt="Root" class="logo-img">
+  </div>
+
+  <div class="check-wrap">
+    <div class="check-circle">
+      <span class="check-icon">✓</span>
+    </div>
+  </div>
+
+  <h1 class="title">You're confirmed!</h1>
+  <p class="subtitle">Your email has been verified. You're all set to start exploring Root.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-number">1</div>
+      <div class="step-text">
+        <div class="step-title">Open the Root app</div>
+        <div class="step-desc">Head back to Root on your phone.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-number">2</div>
+      <div class="step-text">
+        <div class="step-title">Switch to Sign In</div>
+        <div class="step-desc">Tap "Sign In" at the bottom of the screen — your account is ready.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-number">3</div>
+      <div class="step-text">
+        <div class="step-title">Enter your credentials</div>
+        <div class="step-desc">Use the same email and password you signed up with.</div>
+      </div>
+    </div>
+  </div>
+
+  <a href="root://" class="open-btn">
+    Open Root
+  </a>
+
+  <p class="not-you">
+    Wrong account? <a href="https://tryroot.app">Return to tryroot.app</a>
+  </p>
+
+  <div class="footer">
+    <p>&copy; 2026 Root. All rights reserved. &nbsp;·&nbsp;
+      <a href="https://tryroot.app/privacy.html">Privacy</a> &nbsp;·&nbsp;
+      <a href="https://tryroot.app/terms.html">Terms</a>
+    </p>
+  </div>
+
+</div>
+
+</body>
+</html>
