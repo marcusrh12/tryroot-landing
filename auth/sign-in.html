@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign in — Root</title>
+<meta name="description" content="Open Root to sign in to your account.">
+<meta name="theme-color" content="#0A0A0C">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0A0A0C;
+    color: #F0F0F2;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+    text-align: center;
+  }
+  .container { max-width: 480px; width: 100%; }
+  .logo { margin-bottom: 40px; display: inline-block; }
+  .logo-img { height: 60px; width: auto; }
+  .title {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+  }
+  .subtitle {
+    font-size: 16px;
+    color: #8A8A96;
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+  .open-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 16px 28px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    background: #F59E0B;
+    color: #0A0A0C;
+    border: none;
+    margin-bottom: 16px;
+    transition: opacity 0.15s, transform 0.15s;
+  }
+  .open-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+  .help-text {
+    font-size: 13px;
+    color: #55555F;
+    margin-bottom: 32px;
+  }
+  .help-text a {
+    color: #8A8A96;
+    text-decoration: none;
+  }
+  .help-text a:hover { color: #F59E0B; }
+  .footer {
+    color: #55555F;
+    font-size: 12px;
+  }
+  .footer a {
+    color: #8A8A96;
+    text-decoration: none;
+  }
+  .footer a:hover { color: #F59E0B; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="logo">
+    <img src="/root-logo.png" alt="Root" class="logo-img">
+  </div>
+
+  <h1 class="title">Sign in to Root</h1>
+  <p class="subtitle">Open Root on your phone to sign in.</p>
+
+  <a href="root://" class="open-btn">Open Root</a>
+
+  <p class="help-text">
+    Don't have Root yet? <a href="https://tryroot.app">Get it here</a>
+  </p>
+
+  <div class="footer">
+    <p>&copy; 2026 Root. All rights reserved. &nbsp;·&nbsp;
+      <a href="https://tryroot.app/privacy.html">Privacy</a> &nbsp;·&nbsp;
+      <a href="https://tryroot.app/terms.html">Terms</a>
+    </p>
+  </div>
+</div>
+
+<script>
+  // Try to auto-open the app via custom scheme on page load.
+  // If the app is installed, the iOS/Android OS will switch to it.
+  // If not, this is a silent no-op and the user sees the instructions.
+  setTimeout(() => {
+    window.location.href = "root://";
+  }, 500);
+</script>
+
+</body>
+</html>
