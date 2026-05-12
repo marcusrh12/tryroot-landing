@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join the Root Android Beta</title>
+<meta name="description" content="Sign up for early access to Root on Android.">
+<meta name="theme-color" content="#0A0A0C">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0A0A0C;
+    color: #F0F0F2;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+    text-align: center;
+  }
+
+  .container { max-width: 480px; width: 100%; }
+
+  .logo { margin-bottom: 40px; display: inline-block; }
+  .logo-img { height: 60px; width: auto; }
+
+  .badge {
+    display: inline-block;
+    padding: 6px 12px;
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid #F59E0B;
+    border-radius: 999px;
+    color: #F59E0B;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .title {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    color: #8A8A96;
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+
+  .info-card {
+    background: #141418;
+    border: 1px solid #2A2A32;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 24px;
+    text-align: left;
+    font-size: 14px;
+    color: #8A8A96;
+    line-height: 1.6;
+  }
+
+  .info-card strong {
+    color: #F0F0F2;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+    margin-bottom: 24px;
+  }
+
+  .field { display: flex; flex-direction: column; gap: 6px; }
+
+  .label {
+    font-size: 13px;
+    color: #8A8A96;
+    font-weight: 500;
+  }
+
+  .label .required {
+    color: #F59E0B;
+    margin-left: 2px;
+  }
+
+  .input, .textarea {
+    background: #141418;
+    border: 1px solid #2A2A32;
+    border-radius: 12px;
+    padding: 14px 16px;
+    color: #F0F0F2;
+    font-size: 16px;
+    font-family: inherit;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .input:focus, .textarea:focus { border-color: #F59E0B; }
+
+  .textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  .hint {
+    font-size: 12px;
+    color: #55555F;
+    margin-top: -2px;
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 16px 28px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    background: #F59E0B;
+    color: #0A0A0C;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.15s;
+    margin-bottom: 16px;
+  }
+
+  .submit-btn:hover:not(:disabled) {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  .submit-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .error {
+    color: #EF4444;
+    font-size: 14px;
+    margin-bottom: 16px;
+    min-height: 20px;
+  }
+
+  .success-state {
+    display: none;
+  }
+
+  .success-state .check-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(245, 158, 11, 0.1);
+    border: 2px solid #F59E0B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+  }
+
+  .check-icon { font-size: 36px; }
+
+  .next-steps {
+    background: #141418;
+    border: 1px solid #2A2A32;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 20px 0;
+    text-align: left;
+    font-size: 14px;
+    color: #8A8A96;
+    line-height: 1.6;
+  }
+
+  .next-steps ol {
+    padding-left: 20px;
+    margin-top: 8px;
+  }
+
+  .next-steps li {
+    margin-bottom: 6px;
+  }
+
+  .back-link {
+    color: #8A8A96;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  .back-link:hover { color: #F59E0B; }
+
+  .footer {
+    color: #55555F;
+    font-size: 12px;
+    margin-top: 32px;
+  }
+
+  .footer a {
+    color: #8A8A96;
+    text-decoration: none;
+  }
+
+  .footer a:hover { color: #F59E0B; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="logo">
+    <img src="/root-logo.png" alt="Root" class="logo-img">
+  </div>
+
+  <!-- Form state (default) -->
+  <div id="form-state">
+    <div class="badge">Android Beta</div>
+    <h1 class="title">Join the Android beta</h1>
+    <p class="subtitle">Root is launching on Android soon. Sign up to get early access while we're in beta testing.</p>
+
+    <div class="info-card">
+      <strong>How it works</strong>
+      Google requires beta access to be granted manually. Once you sign up, I'll add you to the testing list within 24 hours and email you the link to install Root from the Play Store.
+    </div>
+
+    <form class="form" id="signup-form" action="https://formspree.io/f/maqvkngr" method="POST">
+      <div class="field">
+        <label class="label" for="name">Name<span class="required">*</span></label>
+        <input id="name" name="name" class="input" type="text" required autocomplete="name" />
+      </div>
+
+      <div class="field">
+        <label class="label" for="email">Google account email<span class="required">*</span></label>
+        <input id="email" name="email" class="input" type="email" required autocomplete="email" />
+        <span class="hint">This must be the email tied to your Google Play account.</span>
+      </div>
+
+      <div class="field">
+        <label class="label" for="referral">How did you hear about Root?</label>
+        <textarea id="referral" name="referral" class="textarea" placeholder="Optional"></textarea>
+      </div>
+
+      <!-- Hidden honeypot field for spam protection -->
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+      <div class="error" id="error"></div>
+
+      <button type="submit" class="submit-btn" id="submit-btn">Request access</button>
+    </form>
+
+    <a href="https://tryroot.app" class="back-link">← Back to tryroot.app</a>
+  </div>
+
+  <!-- Success state (hidden initially) -->
+  <div class="success-state" id="success-state">
+    <div class="check-circle">
+      <span class="check-icon">✓</span>
+    </div>
+    <h1 class="title">You're on the list</h1>
+    <p class="subtitle">Thanks for signing up. Here's what to expect:</p>
+
+    <div class="next-steps">
+      <strong style="color: #F0F0F2;">What happens next</strong>
+      <ol>
+        <li>I'll review your request and add your Google account to the testing list within 24 hours.</li>
+        <li>You'll receive an email with a link to install Root from the Play Store.</li>
+        <li>Tap the link, accept the testing invite, and download Root.</li>
+      </ol>
+    </div>
+
+    <a href="https://tryroot.app" class="back-link">← Back to tryroot.app</a>
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2026 Root. All rights reserved. &nbsp;·&nbsp;
+      <a href="https://tryroot.app/privacy.html">Privacy</a> &nbsp;·&nbsp;
+      <a href="https://tryroot.app/terms.html">Terms</a>
+    </p>
+  </div>
+
+</div>
+
+<script>
+  const form = document.getElementById('signup-form');
+  const formState = document.getElementById('form-state');
+  const successState = document.getElementById('success-state');
+  const errorDiv = document.getElementById('error');
+  const submitBtn = document.getElementById('submit-btn');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+    errorDiv.textContent = '';
+
+    try {
+      const formData = new FormData(form);
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        formState.style.display = 'none';
+        successState.style.display = 'block';
+        window.scrollTo(0, 0);
+      } else {
+        const data = await response.json().catch(() => ({}));
+        errorDiv.textContent = data.error || 'Something went wrong. Please try again.';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Request access';
+      }
+    } catch (err) {
+      errorDiv.textContent = 'Network error. Please try again.';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Request access';
+    }
+  });
+</script>
+
+</body>
+</html>
