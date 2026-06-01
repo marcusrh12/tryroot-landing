@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Community Guidelines — Root</title>
+<meta name="description" content="Root community guidelines for submitting questions and participating in debates.">
+<meta property="og:title" content="Community Guidelines — Root">
+<meta property="og:description" content="Root community guidelines for submitting questions and participating in debates.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tryroot.app/guidelines">
+<meta name="theme-color" content="#0A0A0C">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
+<link rel="apple-touch-icon" href="/favicon-180x180.png">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0A0A0C;
+    color: #F0F0F2;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
+    padding: 48px 24px;
+  }
+
+  .container {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #8A8A96;
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 40px;
+    transition: color 0.15s;
+  }
+
+  .back-link:hover {
+    color: #F59E0B;
+  }
+
+  .back-arrow {
+    font-size: 16px;
+  }
+
+  .logo {
+    margin-bottom: 40px;
+  }
+
+  .logo a {
+    text-decoration: none;
+  }
+
+  .logo-text {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+
+  .logo-r { color: #F59E0B; }
+  .logo-rest { color: #F0F0F2; }
+
+  .page-title {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .page-subtitle {
+    font-size: 16px;
+    color: #8A8A96;
+    margin-bottom: 48px;
+    line-height: 1.5;
+  }
+
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #F59E0B;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 16px;
+  }
+
+  .section-body {
+    font-size: 15px;
+    color: #C0C0C8;
+    line-height: 1.7;
+  }
+
+  .section-body p {
+    margin-bottom: 12px;
+  }
+
+  .section-body p:last-child {
+    margin-bottom: 0;
+  }
+
+  .rule-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  .rule-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    background: #141418;
+    border-radius: 10px;
+    border: 1px solid #2A2A32;
+  }
+
+  .rule-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .rule-text {
+    font-size: 14px;
+    color: #C0C0C8;
+    line-height: 1.5;
+  }
+
+  .rule-text strong {
+    color: #F0F0F2;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .blocked-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  .blocked-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: rgba(248, 113, 113, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(248, 113, 113, 0.15);
+    font-size: 14px;
+    color: #C0C0C8;
+    line-height: 1.4;
+  }
+
+  .blocked-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #F87171;
+    flex-shrink: 0;
+  }
+
+  .report-reasons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  .report-tag {
+    padding: 6px 14px;
+    background: #141418;
+    border: 1px solid #2A2A32;
+    border-radius: 999px;
+    font-size: 13px;
+    color: #8A8A96;
+  }
+
+  .divider {
+    height: 1px;
+    background: #1E1E24;
+    margin: 40px 0;
+  }
+
+  .contact-block {
+    padding: 20px;
+    background: #141418;
+    border-radius: 12px;
+    border: 1px solid #2A2A32;
+    font-size: 14px;
+    color: #8A8A96;
+    line-height: 1.6;
+  }
+
+  .contact-block a {
+    color: #F59E0B;
+    text-decoration: none;
+  }
+
+  .contact-block a:hover {
+    text-decoration: underline;
+  }
+
+  .footer {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid #1E1E24;
+    color: #55555F;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer a {
+    color: #55555F;
+    text-decoration: none;
+  }
+
+  .footer a:hover {
+    color: #F59E0B;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="logo">
+    <a href="/">
+      <span class="logo-text">
+        <span class="logo-r">R</span><span class="logo-rest">oot</span>
+      </span>
+    </a>
+  </div>
+
+  <h1 class="page-title">Community Guidelines</h1>
+  <p class="page-subtitle">
+    Root is a place for genuine debate and honest reasoning. 
+    These guidelines exist to keep conversations worth having.
+  </p>
+
+  <!-- What Root is for -->
+  <div class="section">
+    <div class="section-title">What Root is for</div>
+    <div class="section-body">
+      <p>
+        Root questions are meant to be genuinely debatable — issues where reasonable 
+        people can disagree based on different values, priorities, or interpretations 
+        of evidence.
+      </p>
+      <p>
+        Good Root questions invite reflection. They don't have obvious answers, they 
+        aren't rhetorical, and they aren't designed to provoke rather than discuss.
+      </p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Submitting a question -->
+  <div class="section">
+    <div class="section-title">Submitting a community question</div>
+    <div class="section-body">
+      <p>
+        When you submit a question, it goes through an automated review before 
+        appearing in the feed. To be approved, your question must:
+      </p>
+    </div>
+    <div class="rule-list" style="margin-top: 16px;">
+      <div class="rule-item">
+        <div class="rule-icon">✅</div>
+        <div class="rule-text">
+          <strong>Be phrased as a genuine question</strong>
+          Agree/disagree format — not a statement, rant, or loaded prompt.
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon">⚖️</div>
+        <div class="rule-text">
+          <strong>Be genuinely debatable</strong>
+          There should be a reasonable case on both sides.
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon">🌐</div>
+        <div class="rule-text">
+          <strong>Be relevant to a broad audience</strong>
+          Not limited to a specific local, regional, or niche context without wider relevance.
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon">🇺🇸</div>
+        <div class="rule-text">
+          <strong>Be in English</strong>
+          Root currently serves an English-speaking audience.
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon">🚫</div>
+        <div class="rule-text">
+          <strong>Not target private individuals by name</strong>
+          Public figures in their public roles are fair game. Private individuals are not.
+        </div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-icon">🔁</div>
+        <div class="rule-text">
+          <strong>Not be a duplicate</strong>
+          Check if a similar question already exists before submitting.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- What's not allowed -->
+  <div class="section">
+    <div class="section-title">What's not allowed</div>
+    <div class="section-body">
+      <p>
+        The following will result in immediate rejection of a submitted question 
+        and may result in account action:
+      </p>
+    </div>
+    <div class="blocked-list" style="margin-top: 16px;">
+      <div class="blocked-item">
+        <div class="blocked-dot"></div>
+        Hate speech — including slurs targeting race, ethnicity, religion, gender 
+        identity, sexual orientation, or disability status
+      </div>
+      <div class="blocked-item">
+        <div class="blocked-dot"></div>
+        Content designed to dehumanize any group of people
+      </div>
+      <div class="blocked-item">
+        <div class="blocked-dot"></div>
+        Spam, promotional content, or questions submitted repeatedly after rejection
+      </div>
+      <div class="blocked-item">
+        <div class="blocked-dot"></div>
+        Questions deliberately based on false premises presented as fact
+      </div>
+      <div class="blocked-item">
+        <div class="blocked-dot"></div>
+        Personal attacks on named private individuals
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Reporting -->
+  <div class="section">
+    <div class="section-title">Reporting content</div>
+    <div class="section-body">
+      <p>
+        If you see a community question that violates these guidelines, use the 
+        report button on the card. Questions that receive 3 or more reports within 
+        24 hours are automatically hidden and sent for review.
+      </p>
+      <p>
+        Abuse of the report system to suppress legitimate debate is itself a 
+        violation of these guidelines.
+      </p>
+    </div>
+    <div class="report-reasons" style="margin-top: 16px;">
+      <span class="report-tag">Hate speech or slurs</span>
+      <span class="report-tag">Spam or promotional</span>
+      <span class="report-tag">Not a genuine question</span>
+      <span class="report-tag">Duplicate question</span>
+      <span class="report-tag">Other</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- General conduct -->
+  <div class="section">
+    <div class="section-title">General conduct</div>
+    <div class="section-body">
+      <p>
+        When sharing your reasoning on any question — community or otherwise — 
+        keep it focused on the issue, not the person. Responses that attack other 
+        users rather than engaging with the question may be removed.
+      </p>
+      <p>
+        Root does not moderate general profanity in reasoning responses. 
+        We trust users to engage like adults.
+      </p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Contact -->
+  <div class="contact-block">
+    Questions about these guidelines or want to appeal a rejected question? 
+    Reach us at <a href="mailto:tryroot.app@gmail.com">tryroot.app@gmail.com</a>
+  </div>
+
+  <div class="footer">
+    <span>© 2026 Root. All rights reserved. Last updated June 2026.</span>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/privacy.html">Privacy</a>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
