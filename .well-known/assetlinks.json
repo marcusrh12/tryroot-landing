@@ -1,11 +1,13 @@
 [
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
     "target": {
       "namespace": "android_app",
       "package_name": "com.tryroot.app",
       "sha256_cert_fingerprints": [
-        "PLACEHOLDER:REPLACE_WITH_YOUR_ANDROID_SHA256_FINGERPRINT_WHEN_AVAILABLE"
+        "B5:45:39:A6:FD:21:B3:4C:CD:04:19:75:45:9A:95:E6:FA:A7:58:4F:B7:2B:A2:1C:1E:79:86:3D:B7:03:72:6B"
       ]
     }
   }
